@@ -39,7 +39,7 @@ body {
 
 /* Texto de arriba */
 .text-header {
-    font-size: 0.80rem;
+    font-size: 1.40rem;
     line-height: 1.6;
     margin-top: 0px;
     min-height: 80px; /* Reserva espacio para que no salte al escribir */
@@ -64,7 +64,7 @@ body {
 
 /* Contador de abajo */
 .counter-footer {
-    font-size: 0.85rem;
+    font-size: 1.40rem;
     color: #8c8c8c;
     margin-bottom: 30px;
     padding-top: 0px;
@@ -73,7 +73,7 @@ body {
 
 #time-string {
     font-weight: bold;
-    font-size: 0.6rem; /* Un poco más grande para que se lea bien */
+    font-size: 1.40rem; /* Un poco más grande para que se lea bien */
     display: block;
     margin-top: 8px;
     color: #555;
