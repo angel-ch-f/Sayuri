@@ -1,3 +1,4 @@
+/* 1. IMPORTACIÓN Y RESET */
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
 
 * {
@@ -6,105 +7,123 @@
     box-sizing: border-box;
 }
 
+/* 2. ESTRUCTURA BASE */
 body {
-    background-color: #FAF7E5; /* Color crema */
+    background-color: #FDFCF7; /* Color crema */
     font-family: 'Courier Prime', monospace;
     color: #4a4a4a;
-    height: 100svh; /* Altura total de la pantalla */
+    height: 100svh;
     width: 100%;
-    
-    /* Flexbox para centrar todo el bloque en medio de la pantalla */
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Evita scroll innecesario */
+    overflow: hidden;
 }
 
 .main-container {
-    /* --- AQUÍ ESTÁN TUS MUROS INVISIBLES --- */
-    width: 100%;           /* Intenta ocupar todo el ancho posible... */
-    max-width: 420px;      /* ...pero NUNCA pases de 420px (tamaño celular promedio) */
-    height: 90vh;          /* Ocupa el 90% de la altura */
-    padding: 0 25px;       /* Colchón de 25px a izquierda y derecha (el muro interno) */
-    
-    /* Distribución del contenido */
+    width: 100%;
+    max-width: 420px;
+    height: 90vh;
+    padding: 0 25px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Empuja el texto arriba y el contador abajo */
-    text-align: left;
-    
-    /* Opcional: Borde invisible para depurar (puedes borrarlo luego) */
-    /* border: 1px solid red; */ 
+    justify-content: space-between;
+    text-align: center; /* Centrado general */
 }
 
-/* Texto de arriba */
+/* 3. CABECERA Y TEXTO */
 .text-header {
-    font-size: 1.25rem;
-    z-index: 2; /* Asegura que el texto esté por encima del video */
+    font-size: 1.75rem;
+    z-index: 2;
     line-height: 1.6;
-    margin-top: 0px; 
-    min-height: 80px; /* Reserva espacio para que no salte al escribir */
-    text-align: center;
+    min-height: 80px;
+    animation: aparecerLento 2s ease-out forwards;
 }
 
-/* Contenedor del video/imagen */
+/* 4. ILUSTRACIÓN (GIF) */
 .illustration-container {
-    flex: 1; /* Ocupa todo el espacio sobrante en el medio */
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0px 0;
     animation: aparecerLento 2s ease-out forwards;
 }
 
 #main-gif {
-    width: 700px; /* Tamaño fijo para mantener proporciones */
-    height: 700px; /* Tamaño fijo para mantener proporciones */
-    max-height: 400px; /* Limita la altura del video */
-    object-fit: contain; /* Asegura que se vea el arbolito completo */
-    border-radius: 12px; /* Un toque suave en las esquinas del video */
-    z-index: 1; /* Asegura que el video esté por debajo del texto */
-    position: relative; /* Centra el video dentro del contenedor */
-    top: 5px; /* Ajusta la posición vertical del video para que quede mejor con el texto */
-    right: 15px; /* Ajusta la posición horizontal del video para que quede mejor con el texto */
+    width: 100%;
+    max-width: 350px; /* Tamaño optimizado para móvil */
+    height: auto;
+    max-height: 350px;
+    object-fit: contain;
+    border-radius: 12px;
+    z-index: 1;
+    position: relative;
+    top: 5px;
+    animation: palpitar 1.5s ease-in-out infinite;
 }
 
-/* Contador de abajo */
+/* 5. CONTADOR Y PIE */
 .counter-footer {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     color: #8c8c8c;
     margin-bottom: 30px;
-    padding-top: 0px;
     border-top: 1px solid rgba(0,0,0,0.05);
     animation: aparecerLento 2s ease-out forwards;
-    text-align: center;
 }
 
 #time-string {
     font-weight: bold;
-    font-size: 0.85rem; /* Un poco más grande para que se lea bien */
-    display: block;
+    font-size: 0.75rem; /* Tamaño optimizado para que no se corte en móviles */
+    display: inline-block;
     margin-top: 20px;
     color: #555;
-    text-align: center;
-    letter-spacing: -0.9px; /* Hace que los números se vean más "juntitos" y estéticos */
+    letter-spacing: -0.5px;
+    font-variant-numeric: tabular-nums; /* Evita que los números "tiemblen" */
+    animation: palpitar 1.5s ease-in-out infinite;
 }
-/* Definimos el efecto de invisible a visible */
+
+/* 6. OVERLAY Y BOTÓN DE INICIO */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(250, 247, 229, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 2s ease;
+}
+
+#btn-comenzar {
+    padding: 15px 30px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 1.2rem;
+    background-color: #ffffff;
+    border: 2px solid #4a4a4a;
+    color: #4a4a4a;
+    cursor: pointer;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    animation: pulse 2s infinite;
+}
+
+/* 7. ANIMACIONES */
 @keyframes aparecerLento {
-    from {
-        opacity: 0;
-        transform: translateY(10px); /* Opcional: sube un poquito al aparecer */
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
-.fade-in-msg {
-    font-size: 0.5rem;
-    color: #8c8c8c;
-    margin-top: 10px;
-    font-style: italic;
-    animation: aparecerLento 2s ease-out forwards;
-    text-align: center;
+
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    50% { transform: scale(1.05); box-shadow: 0 4px 25px rgba(0,0,0,0.2); }
+    100% { transform: scale(1); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+}
+
+@keyframes palpitar {
+    0% { transform: scale(1); color: #555; }
+    50% { transform: scale(1.05); color: #333; }
+    100% { transform: scale(1); color: #555; }
 }

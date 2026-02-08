@@ -1,15 +1,14 @@
 // CONFIGURACIÓN
-const fechaInicio = new Date(2025, 0, 21, 0, 0); // Tu fecha real
-const texto = document.getElementById('typewriter').innerText;
-document.getElementById('typewriter').innerText = ""; // Limpiamos para el efecto
+const fechaInicio = new Date(2025, 0, 21, 0, 0); 
+const textoAEscribir = "te quiero mucho amiguita linda."; // Definimos el texto aquí para no borrar el HTML
+let i = 0;
 
 // 1. Efecto de Máquina de Escribir
-let i = 0;
 function typeWriter() {
-    if (i < texto.length) {
-        document.getElementById('typewriter').innerHTML += texto.charAt(i);
+    if (i < textoAEscribir.length) {
+        document.getElementById('typewriter').innerHTML += textoAEscribir.charAt(i);
         i++;
-        setTimeout(typeWriter, 50); // Velocidad de escritura
+        setTimeout(typeWriter, 50);
     }
 }
 
@@ -17,7 +16,6 @@ function typeWriter() {
 function updateTimer() {
     const ahora = new Date();
     const diff = ahora - fechaInicio;
-
     const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
     const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
     const minutos = Math.floor((diff / (1000 * 60)) % 60);
@@ -27,45 +25,27 @@ function updateTimer() {
         `${dias} días, ${horas} horas, ${minutos} minutos y ${segundos} segundos`;
 }
 
-// Iniciar todo
+// 3. INICIAR TODO (Un solo window.onload)
 window.onload = () => {
-    typeWriter();
-    setInterval(updateTimer, 1000);
-    updateTimer();
-};
-
-// Dentro de tu window.onload en script.js
-window.onload = () => {
-    typeWriter();
+    // El contador inicia de inmediato de fondo
     setInterval(updateTimer, 1000);
     updateTimer();
 
-    // --- LÓGICA DE AUDIO ---
+    const overlay = document.getElementById('overlay');
+    const btn = document.getElementById('btn-comenzar');
     const musica = document.getElementById('musica-fondo');
-    musica.volume = 1.0; // Volumen al 10%
 
-    // Esta es la clave: el navegador espera un toque
-    document.addEventListener('click', () => {
-        musica.play().catch(e => console.log("Error:", e));
+    // El evento principal es el clic en el botón del overlay
+    btn.addEventListener('click', () => {
+        musica.play().catch(e => console.log("Error de audio:", e));
+        
+        // Iniciamos la escritura al presionar
+        typeWriter(); 
+
+        // Desvanecimiento del overlay
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+            overlay.style.display = 'none';
+        }, 2000);
     }, { once: true });
 };
-
-// Dentro de tu window.onload o al final del script.js
-const musica = document.getElementById('musica-fondo');
-const cta = document.getElementById('cta-click');
-
-document.addEventListener('click', () => {
-    // 1. Reproduce la música
-    musica.play().catch(e => console.log("Error:", e));
-    
-    // 2. Hace que el texto se desvanezca suavemente
-    if (cta) {
-        cta.style.transition = "opacity 0.8s ease"; 
-        cta.style.opacity = "0";
-        
-        // 3. Lo elimina por completo después de que sea invisible
-        setTimeout(() => {
-            cta.style.display = 'none';
-        }, 800);
-    }
-}, { once: true }); // Esto asegura que solo pase la primera vez

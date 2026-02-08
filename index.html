@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="es">
   <head>
-    <meta property="og:title" content="Nuestro contador de amistad 🍎" />
+    <meta property="og:title" content="Nuestro contador de amistad" />
     <meta
       property="og:description"
-      content="Este es un regalo especial para ti, Sayuri por nuestro primer año de amistad, es un contador :D"
+      content="Este es un regalo especial para ti, Sayuri por nuestro primer año de amistad..."
     />
     <meta
       property="og:image"
@@ -12,36 +12,38 @@
     />
     <meta property="og:url" content="https://angel-ch-f.github.io/Sayuri/" />
     <meta property="og:type" content="website" />
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Para Sayuri 🍎</title>
+    <title>Para Sayuri</title>
+
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/png" href="icono.png" />
   </head>
   <body>
-    <audio id="musica-fondo" loop>
+    <div id="overlay">
+      <button id="btn-comenzar">¡Presiona aquí!</button>
+    </div>
+
+    <audio id="musica-fondo" loop preload="auto">
       <source src="song.mp3" type="audio/mpeg" />
     </audio>
+
     <div class="main-container">
       <header class="text-header">
-        <p id="typewriter">
-          Para <span class="name">Sayuri</span>: te quiero mucho amiguita linda
-        </p>
-        <p id="cta-click" class="fade-in-msg">
-          Toca cualquier parte para comenzar la música
+        <p>
+          Para <span class="name">Sayuri</span>: <span id="typewriter"></span>
         </p>
       </header>
 
       <div class="illustration-container">
-        <video autoplay muted loop playsinline id="main-gif">
-          <source src="Fondo.mp4" type="video/mp4" />
-        </video>
+        <img src="Flores.gif" id="main-gif" alt="Flores para Sayuri" />
       </div>
 
       <footer class="counter-footer">
-        <p>Contador desde el primer dia que hablamos</p>
+        <p>Contador desde el primer día que hablamos...</p>
         <div id="timer">
-          <span id="time-string"> 0 días, 0 horas, 0 minutos y 0 segundos</span>
+          <span id="time-string">Calculando tiempo...</span>
         </div>
       </footer>
     </div>
