@@ -53,6 +53,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 0px 0;
+        animation: aparecerLento 2s ease-out forwards; 
 }
 
 #main-gif {
@@ -70,7 +71,8 @@ body {
     color: #8c8c8c;
     margin-bottom: 30px;
     padding-top: 0px;
-    border-top: 1px solid rgba(0,0,0,0.05); /* Una línea Sdivisoria muy sutil */
+    border-top: 1px solid rgba(0,0,0,0.05);
+    animation: aparecerLento 2s ease-out forwards; 
 }
 
 #time-string {
@@ -80,4 +82,15 @@ body {
     margin-top: 8px;
     color: #555;
     letter-spacing: -0.5px; /* Hace que los números se vean más "juntitos" y estéticos */
+}
+/* Definimos el efecto de invisible a visible */
+@keyframes aparecerLento {
+    from {
+        opacity: 0;
+        transform: translateY(10px); /* Opcional: sube un poquito al aparecer */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
