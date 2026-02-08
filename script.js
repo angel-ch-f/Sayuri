@@ -33,3 +33,39 @@ window.onload = () => {
     setInterval(updateTimer, 1000);
     updateTimer();
 };
+
+// Dentro de tu window.onload en script.js
+window.onload = () => {
+    typeWriter();
+    setInterval(updateTimer, 1000);
+    updateTimer();
+
+    // --- LÓGICA DE AUDIO ---
+    const musica = document.getElementById('musica-fondo');
+    musica.volume = 1.0; // Volumen al 10%
+
+    // Esta es la clave: el navegador espera un toque
+    document.addEventListener('click', () => {
+        musica.play().catch(e => console.log("Error:", e));
+    }, { once: true });
+};
+
+// Dentro de tu window.onload o al final del script.js
+const musica = document.getElementById('musica-fondo');
+const cta = document.getElementById('cta-click');
+
+document.addEventListener('click', () => {
+    // 1. Reproduce la música
+    musica.play().catch(e => console.log("Error:", e));
+    
+    // 2. Hace que el texto se desvanezca suavemente
+    if (cta) {
+        cta.style.transition = "opacity 0.8s ease"; 
+        cta.style.opacity = "0";
+        
+        // 3. Lo elimina por completo después de que sea invisible
+        setTimeout(() => {
+            cta.style.display = 'none';
+        }, 800);
+    }
+}, { once: true }); // Esto asegura que solo pase la primera vez

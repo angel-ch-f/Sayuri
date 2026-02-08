@@ -57,12 +57,15 @@ body {
 }
 
 #main-gif {
-    width: 700px;
-    height: 700px;
+    width: 700px; /* Tamaño fijo para mantener proporciones */
+    height: 700px; /* Tamaño fijo para mantener proporciones */
     max-height: 400px; /* Limita la altura del video */
     object-fit: contain; /* Asegura que se vea el arbolito completo */
     border-radius: 12px; /* Un toque suave en las esquinas del video */
     z-index: 1; /* Asegura que el video esté por debajo del texto */
+    position: relative; /* Centra el video dentro del contenedor */
+    top: 5px; /* Ajusta la posición vertical del video para que quede mejor con el texto */
+    right: 30px; /* Ajusta la posición horizontal del video para que quede mejor con el texto */
 }
 
 /* Contador de abajo */
@@ -93,4 +96,11 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
+}
+.fade-in-msg {
+    font-size: 0.8rem;
+    color: #8c8c8c;
+    margin-top: 10px;
+    font-style: italic;
+    animation: aparecerLento 2s ease-out forwards;
 }
