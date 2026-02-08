@@ -39,11 +39,12 @@ body {
 
 /* Texto de arriba */
 .text-header {
-    font-size: 1.40rem;
+    font-size: 1.25rem;
     z-index: 2; /* Asegura que el texto esté por encima del video */
     line-height: 1.6;
     margin-top: 0px; 
     min-height: 80px; /* Reserva espacio para que no salte al escribir */
+    text-align: center;
 }
 
 /* Contenedor del video/imagen */
@@ -53,7 +54,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 0px 0;
-        animation: aparecerLento 2s ease-out forwards; 
+    animation: aparecerLento 2s ease-out forwards;
 }
 
 #main-gif {
@@ -65,26 +66,28 @@ body {
     z-index: 1; /* Asegura que el video esté por debajo del texto */
     position: relative; /* Centra el video dentro del contenedor */
     top: 5px; /* Ajusta la posición vertical del video para que quede mejor con el texto */
-    right: 30px; /* Ajusta la posición horizontal del video para que quede mejor con el texto */
+    right: 15px; /* Ajusta la posición horizontal del video para que quede mejor con el texto */
 }
 
 /* Contador de abajo */
 .counter-footer {
-    font-size: 1.40rem;
+    font-size: 1.25rem;
     color: #8c8c8c;
     margin-bottom: 30px;
     padding-top: 0px;
     border-top: 1px solid rgba(0,0,0,0.05);
-    animation: aparecerLento 2s ease-out forwards; 
+    animation: aparecerLento 2s ease-out forwards;
+    text-align: center;
 }
 
 #time-string {
     font-weight: bold;
-    font-size: 1.40rem; /* Un poco más grande para que se lea bien */
+    font-size: 0.85rem; /* Un poco más grande para que se lea bien */
     display: block;
-    margin-top: 8px;
+    margin-top: 20px;
     color: #555;
-    letter-spacing: -0.5px; /* Hace que los números se vean más "juntitos" y estéticos */
+    text-align: center;
+    letter-spacing: -0.9px; /* Hace que los números se vean más "juntitos" y estéticos */
 }
 /* Definimos el efecto de invisible a visible */
 @keyframes aparecerLento {
@@ -98,9 +101,10 @@ body {
     }
 }
 .fade-in-msg {
-    font-size: 0.8rem;
+    font-size: 0.5rem;
     color: #8c8c8c;
     margin-top: 10px;
     font-style: italic;
     animation: aparecerLento 2s ease-out forwards;
+    text-align: center;
 }
