@@ -37,6 +37,9 @@ window.onload = () => {
 
     // El evento principal es el clic en el botón del overlay
     btn.addEventListener('click', () => {
+        musica.volume = 0.7; // Ajustamos el volumen
+        musica.backrate = true; // Hacemos que la música se repita
+        musica.playbackRate = 0.9; // Velocidad ligeramente más lenta para un ambiente más relajado
         musica.play().catch(e => console.log("Error de audio:", e));
         
         // Iniciamos la escritura al presionar
